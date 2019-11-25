@@ -1,0 +1,7 @@
+namespace tinyworld2.tinydb2;
+
+context tinyf2 {
+	entity world {
+       key continent: String(100);
+    };
+};
