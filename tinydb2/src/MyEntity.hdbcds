@@ -1,0 +1,18 @@
+namespace tinyworld2.tinydb2;
+
+/*@@layout{"layoutInfo":{"x":-172.681640625,"y":-95}}*/
+context MyEntity {
+    entity Employee {
+        key id   : String(10);
+            Name : String(100);
+    };
+};
+
+/*@@layout{"layoutInfo":{"x":-195,"y":-41.5}}*/
+entity Employee_det {
+    key Id           : String(10);
+        Name         : String(100);
+        Address      : String(255);
+        Country      : String(100);
+        Organization : String(100);
+};

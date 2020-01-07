@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="tinyworld2.tinydb2::CV_Emp_Det" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false" runWithInvokerPrivileges="true">
+<descriptions defaultDescription="CV_Emp_Det.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="tinyworld2.tinydb2::MyEntity.Employee">
+    <resourceUri>tinyworld2.tinydb2::MyEntity.Employee</resourceUri>
+  </DataSource>
+  <DataSource id="tinyworld2.tinydb2::Employee_det">
+    <resourceUri>tinyworld2.tinydb2::Employee_det</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="id"/>
+      <viewAttribute id="Name"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="tinyworld2.tinydb2::MyEntity.Employee"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="Id"/>
+      <viewAttribute id="Name"/>
+      <viewAttribute id="Address"/>
+      <viewAttribute id="Country"/>
+      <viewAttribute id="Organization"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="tinyworld2.tinydb2::Employee_det"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_N" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="id"/>
+      <viewAttribute id="Name"/>
+      <viewAttribute id="Address"/>
+      <viewAttribute id="Country"/>
+      <viewAttribute id="Organization"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="id" source="id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Name" source="Name"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Address" source="Address"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Country" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Organization" source="Organization"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="id" source="Id"/>
+    </input>
+    <joinAttribute name="id"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="id" order="1" descriptionColumnName="Name" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="id"/>
+      <keyMapping columnObjectName="Join_1" columnName="id"/>
+    </attribute>
+    <attribute id="Name" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Name"/>
+      <keyMapping columnObjectName="Join_1" columnName="Name"/>
+    </attribute>
+    <attribute id="Address" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Address"/>
+      <keyMapping columnObjectName="Join_1" columnName="Address"/>
+    </attribute>
+    <attribute id="Country" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Country"/>
+      <keyMapping columnObjectName="Join_1" columnName="Country"/>
+    </attribute>
+    <attribute id="Organization" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Organization"/>
+      <keyMapping columnObjectName="Join_1" columnName="Organization"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="221.11302679000914" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92.00000000000001" y="376.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302.00000000000006" y="376.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="221.11302679000914" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="136.0234375"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="148.369140625"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>   
