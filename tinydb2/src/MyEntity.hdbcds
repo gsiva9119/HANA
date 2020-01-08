@@ -5,6 +5,7 @@ context MyEntity {
     entity Employee {
         key id   : String(10);
             Name : String(100);
+            Surname:String(100);
     };
 };
 
